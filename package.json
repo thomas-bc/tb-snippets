@@ -16,17 +16,13 @@
 	"contributes": {
 		"keybindings": [
 			{
-			  "command": "tb-snippets.helloWorld",
+			  "command": "tb-snippets.registerSnippet",
 			  "key": "ctrl+f1",
 			  "mac": "cmd+f1",
 			  "when": "editorTextFocus"
 			}
 		  ],
 		"commands": [
-			{
-				"command": "tb-snippets.helloWorld",
-				"title": "Hello World"
-			},
 			{
 				"command": "tb-snippets.registerSnippet",
 				"title": "Register text selection as snippet"
