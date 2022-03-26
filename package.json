@@ -10,16 +10,41 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:tb-snippets.helloWorld"
+		"onStartupFinished"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"keybindings": [
+			{
+			  "command": "tb-snippets.helloWorld",
+			  "key": "ctrl+f1",
+			  "mac": "cmd+f1",
+			  "when": "editorTextFocus"
+			}
+		  ],
 		"commands": [
 			{
 				"command": "tb-snippets.helloWorld",
 				"title": "Hello World"
+			},
+			{
+				"command": "tb-snippets.registerSnippet",
+				"title": "Register text selection as snippet"
 			}
-		]
+		],
+		"menus": {
+			"commandPalette": [
+			  {
+				"command": "tb-snippets.registerSnippet",
+				"when": "editorHasSelection"
+			  }
+			],
+			"editor/context": [
+				{
+					"command": "tb-snippets.registerSnippet"
+				}
+			]
+		  }
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

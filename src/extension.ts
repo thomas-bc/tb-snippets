@@ -19,6 +19,23 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from TB Snippets!');
 	});
 
+	let registerSnippet = vscode.commands.registerCommand('tb-snippets.registerSnippet', () => {
+		
+		// Get the active text editor
+		const editor = vscode.window.activeTextEditor;
+		
+		if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+			
+			// Get the word within the selection
+			const selectedText = document.getText(selection);
+			
+			vscode.window.showInformationMessage("Register Snippet: " + selectedText);
+		}
+		
+	});
+
 	context.subscriptions.push(disposable);
 }
 
