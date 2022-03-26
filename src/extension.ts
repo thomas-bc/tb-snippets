@@ -23,15 +23,16 @@ export function activate(context: vscode.ExtensionContext) {
 		
 		// Get the active text editor
 		const editor = vscode.window.activeTextEditor;
-		
+
 		if (editor) {
 			const document = editor.document;
 			const selection = editor.selection;
 			
-			// Get the word within the selection
+			// Get the text within the selection
 			const selectedText = document.getText(selection);
 			
 			vscode.window.showInformationMessage("Register Snippet: " + selectedText);
+			context.workspaceState.update("1", selectedText);
 		}
 		
 	});
@@ -44,12 +45,15 @@ export function activate(context: vscode.ExtensionContext) {
 
 		if (editor) {
 			const cursorPosition = editor.selection.active;
-
-			editor.edit(editBuilder => {
-				editBuilder.insert(cursorPosition, "I am inserted!!!")
-			});
 			
-			vscode.window.showInformationMessage("You wrote a snippet!!");
+			const textSnippet = context.workspaceState.get("1");
+
+			if (typeof textSnippet === "string") {
+				editor.edit(editBuilder => {
+					editBuilder.insert(cursorPosition, textSnippet);
+				});
+				vscode.window.showInformationMessage("You wrote a snippet!!");
+			}
 		}
 	});
 
