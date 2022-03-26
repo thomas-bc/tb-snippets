@@ -36,6 +36,23 @@ export function activate(context: vscode.ExtensionContext) {
 		
 	});
 
+
+	let writeSnippet = vscode.commands.registerCommand('tb-snippets.writeSnippet', () => {
+
+		// Get the active text editor
+		const editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			const cursorPosition = editor.selection.active;
+
+			editor.edit(editBuilder => {
+				editBuilder.insert(cursorPosition, "I am inserted!!!")
+			});
+			
+			vscode.window.showInformationMessage("You wrote a snippet!!");
+		}
+	});
+
 	context.subscriptions.push(disposable);
 }
 

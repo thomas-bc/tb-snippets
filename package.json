@@ -30,6 +30,10 @@
 			{
 				"command": "tb-snippets.registerSnippet",
 				"title": "Register text selection as snippet"
+			},
+			{
+				"command": "tb-snippets.writeSnippet",
+				"title": "Write snippet at cursor position"
 			}
 		],
 		"menus": {
@@ -42,6 +46,9 @@
 			"editor/context": [
 				{
 					"command": "tb-snippets.registerSnippet"
+				},
+				{
+					"command": "tb-snippets.writeSnippet"
 				}
 			]
 		  }
